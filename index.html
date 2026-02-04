@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <!-- CSS 파일을 연결합니다 -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <!-- 제목 섹션 -->
@@ -20,19 +22,20 @@
             <div class="file-upload-content">
                 <!-- 이미지가 없을 때 보여줄 영역 -->
                 <div class="drag-text">
-                    <img src="img/upload-icon.svg" class="upload-icon" alt="업로드 아이콘" style="display:none;"> <!-- 아이콘은 나중에 추가 -->
+                    <img src="img/upload-icon.svg" class="upload-icon" alt="업로드 아이콘" style="display:none;">
+                    <!-- 아이콘은 나중에 추가 -->
                     <h3>얼굴 사진을 올려놓거나 눌러서 업로드하세요!</h3>
                 </div>
-                
+
                 <!-- 실제 파일 업로드 버튼 (숨김 처리하고 디자인된 버튼으로 대체) -->
                 <input class="file-upload-input" type="file" onchange="readURL(this);" accept="image/*" />
-                
+
                 <!-- 이미지가 업로드되면 보여질 미리보기 영역 (처음엔 숨김) -->
                 <div class="file-upload-image" style="display: none;">
-                    <img class="file-upload-image-preview" src="#" alt="your image" />
+                    <img class="file-upload-image-preview" id="face-image" src="#" alt="your image" />
                 </div>
             </div>
-            
+
             <button class="try-again-btn" onclick="window.location.reload();" style="display: none;">
                 다른 사진으로 재시도
             </button>
@@ -40,19 +43,29 @@
 
         <!-- 결과가 표시될 영역 -->
         <section class="section result-section">
+            <div id="loading" class="animated-bounce">
+                <div class="spinner-border" role="status">
+                </div>
+                <!-- <p class="text-center">AI가 동물상을 분석중입니다...</p> -->
+                <p class="text-center">AI가 동물상을 분석중입니다...</p>
+            </div>
             <div class="result-message" id="result-message"></div>
             <div id="label-container"></div>
         </section>
 
         <footer class="footer">
-            <p>© 2024 AI Animal Look-alike App</p>
+            <p>© 2025 AI Animal Look-alike App-MADE BY JUNO</p>
         </footer>
     </div>
 
-    <!-- 나중에 Teachable Machine 스크립트가 들어갈 자리 -->
+    <!-- Teachable Machine 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <div id="webcam-container"></div>
-    
+
     <!-- JavaScript 파일을 연결합니다 -->
     <script src="script.js"></script>
 </body>
+
 </html>

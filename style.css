@@ -1,6 +1,5 @@
 /* 
-    기본 스타일 설정 
-    * 는 모든 요소를 의미합니다. 박스 크기를 테두리 포함으로 설정합니다.
+   기본 스타일 설정 
 */
 * {
     box-sizing: border-box;
@@ -9,20 +8,300 @@
 }
 
 body {
-    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    background-color: #f6f7fa;
+    font-family: 'Suit', 'Pretendard', 'Malgun Gothic', sans-serif;
+    background-color: #f6f9fc;
+    /* 더 밝고 깨끗한 배경 */
     color: #333;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 웹폰트 (SUIT) */
+@import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css');
+
+/* 로딩 애니메이션 */
+#loading {
+    display: none;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    color: #4a90e2;
+    /* 세련된 블루 */
+}
+
+@keyframes spinner-border {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 메인 카드 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 500px;
+    /* 조금 더 슬림하게 */
+    margin: 20px;
+    padding: 50px 30px;
+    background-color: white;
+    border-radius: 30px;
+    /* 둥근 모서리 강조 */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    /* 부드럽고 깊은 그림자 */
+    text-align: center;
+}
+
+/* 제목 스타일 */
+.title-section {
+    margin-bottom: 40px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #8b95a1;
+    font-weight: 500;
+}
+
+/* 업로드 영역 스타일 */
+.upload-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.file-upload-content {
+    background-color: #f8fafb;
+    border: 2px dashed #e2e5e7;
+    border-radius: 20px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.file-upload-content:hover {
+    background-color: #f1f3f5;
+    border-color: #4a90e2;
+    transform: translateY(-2px);
+    /* 살짝 떠오르는 느낌 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.file-upload-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.drag-text h3 {
+    font-weight: 600;
+    color: #4a90e2;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* 이미지 미리보기 스타일 */
+.file-upload-image-preview {
+    max-width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 결과 영역 */
+.result-section {
+    margin-top: 40px;
+}
+
+/* 재시도 버튼 (BottomCTA 스타일) */
+.try-again-btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    /* 완전 둥근 버튼 */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+    transition: all 0.2s ease;
+}
+
+.try-again-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #c0c0c0;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   결과 화면 스타일 (ListRow 느낌)
+   ========================================= */
+.animal-explain {
+    font-size: 1.3rem;
+    color: #4a4a4a;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.label-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+    padding: 12px 15px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.animal-label {
+    width: auto;
+    min-width: 60px;
+    text-align: left;
+    font-weight: 700;
+    color: #333;
+    font-size: 1rem;
+    margin-right: 15px;
+}
+
+.bar-container {
+    flex-grow: 1;
+    height: 12px;
+    /* 얇고 세련된 바 */
+    background-color: #e9ecef;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    /* 퍼센트 텍스트 등을 위해 */
+    position: relative;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.box {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.percent-text {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    /* 바 위쪽으로 이동 */
+    color: #888;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* 상위 3개 동물 강조 등 */
+.label-item:nth-child(1) .percent-text {
+    color: #4a90e2;
+    /* 1등은 파란색 강조 */
+    font-weight: 800;
+}
+
+/* 동물별 제목 색상 및 폰트 */
+div[class$="-animal-title"] {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+}
+
+.dog-animal-title {
+    color: #4a90e2;
+}
+
+.cat-animal-title {
+    color: #ff6b6b;
+}
+
+.rabbit-animal-title {
+    color: #fe8c68;
+}
+
+.dinosaur-animal-title {
+    color: #3bc9db;
+}
+
+.bear-animal-title {
+    color: #9775fa;
+}
+
+/* 웹폰트 임시 추가 (SUIT) */
+@import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css');
+
+/* 로딩 애니메이션 */
+#loading {
+    display: none;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    color: #35465d;
+}
+
+@keyframes spinner-border {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* 전체 컨텐츠를 감싸는 컨테이너 */
 .container {
     width: 100%;
-    max-width: 600px; /* 너무 넓어지지 않게 제한 */
+    max-width: 600px;
+    /* 너무 넓어지지 않게 제한 */
     margin: 0 auto;
     padding: 20px;
     background-color: white;
     min-height: 100vh;
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
 /* 제목 스타일 */
@@ -65,7 +344,10 @@ body {
 
 .file-upload-content:hover {
     background-color: #e9ecef;
-    border-color: #adb5bd;
+    border-color: #35465d;
+    /* 호버 시 테두리 색 변경 */
+    transform: scale(1.01);
+    /* 살짝 커지는 효과 */
 }
 
 /* 실제 파일 input은 숨기고 부모 div를 클릭하게 만듭니다 */
@@ -93,7 +375,7 @@ body {
     max-width: 100%;
     max-height: 300px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 결과 영역 */
@@ -113,6 +395,7 @@ body {
     cursor: pointer;
     font-size: 1rem;
 }
+
 .try-again-btn:hover {
     background-color: #2c3e50;
 }
@@ -122,4 +405,103 @@ body {
     margin-top: 50px;
     color: #aaa;
     font-size: 0.8rem;
+}
+
+/* =========================================
+   결과 화면 스타일
+   ========================================= */
+.animal-explain {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.label-item {
+    display: flex;
+    align-items: center;
+    /* 수직 중앙 정렬 */
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+.animal-label {
+    width: 20%;
+    text-align: left;
+    font-weight: 600;
+    color: #35465d;
+    font-size: 1.1rem;
+}
+
+.bar-container {
+    flex-grow: 1;
+    /* 남은 공간 모두 차지 */
+    height: 1.8rem;
+    background-color: #f1f3f5;
+    border-radius: 1rem;
+    display: flex;
+    /* 내부 요소 정렬 */
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    margin-left: 1rem;
+    /* 라벨과 간격 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* 깊이감 추가 */
+}
+
+.box {
+    height: 100%;
+    /* border-radius는 JS에서 width와 함께 처리되거나 여기서 */
+    border-radius: 1rem;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /* 더 부드러운 애니메이션 */
+    position: absolute;
+    /* 겹치지 않게 */
+    top: 0;
+    left: 0;
+}
+
+/* 퍼센트 텍스트는 바 위에 올라가는게 아니라 오른쪽에 고정되거나, 바 안에 표시 필요.
+   현재 구조상 bar-container 안에 box와 percent-text가 있음.
+   percent-text를 absolute로 bar-container 우측 끝에 배치하는 것이 깔끔함. */
+.percent-text {
+    position: absolute;
+    right: 15px;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 2;
+    /* 항상 위에 보이게 */
+}
+
+/* 동물별 제목 색상 */
+.dog-animal-title {
+    color: #548dd4;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.cat-animal-title {
+    color: #ff6c6c;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.rabbit-animal-title {
+    color: #e56995;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.dinosaur-animal-title {
+    color: #5eb595;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.bear-animal-title {
+    color: #8d6e63;
+    font-size: 2rem;
+    font-weight: bold;
 }
